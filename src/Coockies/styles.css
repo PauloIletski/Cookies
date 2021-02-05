@@ -1,58 +1,199 @@
 .style {
-    align-items: "baseline";
-    background: "#353535";
-    color: "white";
-    display: "flex";
-    flex-wrap: "wrap";
-    justify-content: "space-between";
-    left: "0";
-    position: "fixed";
-    width: "100%";
-    z-index: "999";
+    align-items: baseline;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    left: 0;
+    align-self: center;
 }
 
+.mainCookieContent {
+    background-color: #fff;
+    width: 100%;
+    z-index: 999;
+    height: auto;
+    position: fixed;
+    bottom: 0;
 
-.buttonStyle {
-    background: "#ffd42d";
-    border: "0";
-    border-radius: "0px";
-    box-shadow: "none";
-    color: "black";
-    cursor: "pointer";
-    flex: "0 0 auto";
-    padding: "5px 10px";
-    margin: "15px";
+
 }
 
-;
-
-
-.declineButtonStyle {
-    background: "#c12a2a";
-    border: "0";
-    border-radius: "0px";
-    box-shadow: "none";
-    color: "#e5e5e5";
-    cursor: "pointer";
-    flex: "0 0 auto";
-    padding: "5px 10px";
-    margin: "15px";
+.content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px 84px;
+    align-self: center;
 }
 
 
 .contentStyle {
-    flex: "1 0 300px";
-    margin: "15px";
+    flex: 1 0 300px;
+    align-items: center;
+    text-align: left;
+    margin-bottom: 10px;
 }
+
+.buttonStyle {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 8px 34px;
+    background: #2F559C;
+    border: 1px solid #2F559C;
+    box-sizing: border-box;
+    border-radius: 5px;
+    color: #fff;
+}
+
+
 
 .overlayStyle {
-    position: "fixed";
+    position: fixed;
     left: 0;
     top: 0;
-    width: "100%";
-    height: "100%";
-    z-index: "999";
-    background-color: "rgba(0;0;0;0.3)";
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+
 }
 
-;
+.title {
+    color: #2F559C;
+    margin-top: 24px;
+    margin-bottom: 16px;
+    font-size: 16px;
+}
+
+.text {
+    font-family: 'Poppins', 'Arial';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    color: #637390;
+}
+
+
+@media screen and(max-width:1024px){
+    .content{
+        padding: 0px 28px !important;
+    }
+}
+
+
+
+@media screen and (max-width:720px){
+       
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0;
+        align-self: center;
+    }
+
+    .contentStyle {
+        flex: 0 0 180px;
+        align-items: center;
+        text-align: center;
+        margin-bottom: -29px;
+        padding: 0 20px;
+        font-size: 14px;
+
+    }
+
+    .style{
+        padding: 10% 0;
+        max-width: 720px;
+    }
+
+    .buttonStyle {
+        width: 100%;
+        max-width: 284px;      
+        padding: 8px 81px;
+        min-height: 36px;
+    }
+
+    .title {
+        color: #2F559C;
+        margin-top: 24px;
+        margin-bottom: 16px;
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width:360px){
+    .style{
+        padding: 10% 0;
+        max-width: 360px;
+    }
+}
+
+@media screen and (max-width:375px) {
+    .style {
+        align-items: baseline;
+        color: white;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        left: 0;
+        align-content: center;
+        padding: 10% 0;
+        width: 100%;
+        max-width: 375px;
+        margin:0 auto;
+    }
+
+    .mainCookieContent {
+        background-color: #fff;
+        width: 100%;
+        z-index: 999;
+        height: auto;
+        position: fixed;
+        bottom: 0;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0;
+        align-self: center;
+    }
+
+
+  
+
+    .overlayStyle {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 999;
+
+    }
+
+    
+
+    .text {
+        font-family: 'Poppins', 'Arial';
+        font-style: normal;
+        font-weight: bold;
+        font-size: 14px;
+        color: #637390;
+    }
+
+}
+
+
+@media screen and(max-width:414px){
+    .style{
+        padding: 10% 0;
+        max-width: 414px;
+    }
+    
+}
+
+

@@ -1,11 +1,17 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import Cookies from "js-cookie";
-import Styles from './styles.css';
+import  './styles.css';
+
 
 const ConditionalWrapper=({condition,wrapper, children})=>{
     return condition ? wrapper(children):children;
 }
+
+export const OPTIONS = {
+  TOP: "top",
+  BOTTOM: "bottom",
+  NONE: "none",
+};
 
 export const SAME_SITE_OPTIONS = {
   STRICT: "strict",
@@ -55,7 +61,7 @@ class CookieConsent extends Component{
         onAccept();
 
         if(hideOnAccept){
-            this.set({visible:false});
+            this.setState({visible:false});
         }
     }
 
@@ -74,7 +80,7 @@ class CookieConsent extends Component{
     }
 
 
-    set(cookieName,cookieValue){
+    setCookie(cookieName,cookieValue){
         const{extraCookieOptions,expires,sameSite}=this.props;
         let {cookieSecurity}=this.props;
 
@@ -99,7 +105,9 @@ class CookieConsent extends Component{
 
     render(){
         if(!this.state.visible){
-            return null;
+          console.log('Entrou');  
+          return null;
+            
         }
 
         const {
@@ -112,29 +120,18 @@ class CookieConsent extends Component{
           
         const buttonsToRender=[];
     
+         
          buttonsToRender.push(
-            <ButtonComponent
-            key="declineButton"
-            className={Styles.declineButtonStyle}
-            aria-label='decline'
-            onClick={() => {
-              this.decline();
-            }}
-          >
-            "Decline"
-          </ButtonComponent>
-         )
-         buttonsToRender.push(
-            <ButtonComponent
+            <button
               key="acceptButton"
-              className={Styles.buttonStyle}
+              className="buttonStyle"
               aria-label='Accept'
               onClick={() => {
                 this.accept();
               }}
             >
-              "Accept"
-            </ButtonComponent>
+              Continuar e fechar
+            </button>
           );
 
           if (flipButtons) {
@@ -142,29 +139,60 @@ class CookieConsent extends Component{
           }
       
         return (
-            <ConditionalWrapper
-              condition={overlay}
-              wrapper={(children) => (
-                <div className={Styles.overlayStyle}>
-                  {children}
+            <ConditionalWrapper>
+              <div className="mainCookieContent">
+                <div className="content">
+                <div  className="contentStyle">
+                  <h5 className="title">Mundo Pet e os cookies:</h5>
+                  <p className="text">Utilizamos cookies para otimizar as funcionalidades, personalizar anuncios e melhorar a sua experiência no site. Saiba mais em nossa: </p>
+                  <p className='text'><a  href="" className="text">Política de Privacidade</a> </p>
                 </div>
-              )}
-            >
-              <div className={Styles.style}>
-                <div  className={Styles.contentStyle}>
-                  {this.props.children}
-                </div>
-                <div className={Styles.buttonStyle}>
+                <div className="style">
                   {buttonsToRender.map((button) => {
                     return button;
                   })}
                 </div>
+                </div>
+               
               </div>
             </ConditionalWrapper>
           );
     }
-
-   
+  
+    
 }
 
+CookieConsent.defaultProps = {
+  disableStyles: false,
+  hideOnAccept: true,
+  hideOnDecline: true,
+  location: OPTIONS.BOTTOM,
+  onAccept: () => {},
+  onDecline: () => {},
+  cookieName: defaultCookieConsentName,
+  cookieValue: true,
+  declineCookieValue: false,
+  setDeclineCookie: true,
+  buttonText: "I understand",
+  declineButtonText: "I decline",
+  debug: false,
+  expires: 365,
+  containerClasses: "CookieConsent",
+  contentClasses: "",
+  buttonClasses: "",
+  buttonWrapperClasses: "",
+  declineButtonClasses: "",
+  buttonId: "rcc-confirm-button",
+  declineButtonId: "rcc-decline-button",
+  extraCookieOptions: {},
+  disableButtonStyles: false,
+  enableDeclineButton: false,
+  flipButtons: false,
+  sameSite: SAME_SITE_OPTIONS.LAX,
+  ButtonComponent: ({ children, ...props }) => <button {...props}>{children}</button>,
+  overlay: false,
+  overlayClasses: "",
+  ariaAcceptLabel: "Accept cookies",
+  ariaDeclineLabel: "Decline cookies",
+};
 export default CookieConsent;
